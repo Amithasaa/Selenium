@@ -10,8 +10,52 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class Practice {
+	WebDriver driver;
 
-	public static void main(String[] args) throws InterruptedException{
+	public Practice(WebDriver driver) {
+		
+		this.driver = driver;
+	}
+	By emailinput = By.id("email-input");
+	By passwordinput = By.id("password-input");
+	By loginButton = By.id("login-submit-button");
+	By emailRequiredError = By.xpath("//p[@id='email-error' and text()='Email is required']");
+	By passwordRequiredError = By.xpath("//p[@id='password-error' and text()='Please enter your password']");
+	By invalidEmailFormatError = By.xpath("//p[@id='email-error' and text()='Invalid email format']");
+	By userNotFoundError = By.xpath("//div[@data-title='' and text()='User not found with this email address']");
+	By incorrectCredentialsError = By.xpath("//div[@data-title='' and text()='Incorrect Credentials']");
+	
+	public void enterPassword(String password) {
+		WebElement passwordField = driver.findElement(passwordinput);
+		passwordField.clear();
+		passwordField.sendKeys(password);
+	}
+	
+	public void clickLoginbutton() {
+		driver.findElement(loginButton).click();
+	}
+
+	public String getEmailRequiredError() {
+		return driver.findElement(emailRequiredError).getText();
+	}
+	
+	public String getPasswordRequiredError() {
+		return driver.findElement(passwordRequiredError).getText();
+	}
+	
+	public String getInvalidEmailFormatError() {
+		return driver.findElement(invalidEmailFormatError).getText();
+	}
+	
+	public String getUserNotFoundError() {
+		return driver.findElement(userNotFoundError).getText();
+	}
+	
+	public String getIncorrectCredentialsError() {
+		return driver.findElement(incorrectCredentialsError).getText();
+	}
+}
+	
 		// TODO Auto-generated method stub
 //      WebDriver driver = new ChromeDriver();
 //      driver.get("https://www.google.com/");
@@ -339,24 +383,31 @@ public class Practice {
 		
 		
 		// selectable
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://jqueryui.com/selectable/");
-		
-		WebElement ifarme = driver.findElement(By.className("demo-frame"));
-		driver.switchTo().frame(ifarme);
-		
-		List<WebElement> selectable = driver.findElements(By.cssSelector("#selectable li"));
-		
-		Actions action = new Actions(driver);
-		action.keyDown(Keys.CONTROL)
-					.click(selectable.get(0))
-					.click(selectable.get(2))
-					.click(selectable.get(4))
-					.keyUp(Keys.CONTROL)
-					.perform();
-		
-		driver.switchTo().defaultContent();
-	}
-
-}
+//		public Practice() {
+//		super();
+//		// TODO Auto-generated constructor stub
+//	}
+//
+//		WebDriver driver = new ChromeDriver();
+//		driver.manage().window().maximize();
+//		driver.get("https://jqueryui.com/selectable/");
+//		
+//		WebElement ifarme = driver.findElement(By.className("demo-frame"));
+//		driver.switchTo().frame(ifarme);
+//		
+//		List<WebElement> selectable = driver.findElements(By.cssSelector("#selectable li"));
+//		
+//		Actions action = new Actions(driver);
+//		action.keyDown(Keys.CONTROL)
+//					.click(selectable.get(0))
+//					.click(selectable.get(2))
+//					.click(selectable.get(4))
+//					.keyUp(Keys.CONTROL)
+//					.perform();
+//		
+//		driver.switchTo().defaultContent();
+//	}
+//
+//}
+//
+//
