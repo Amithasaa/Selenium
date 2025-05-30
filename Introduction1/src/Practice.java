@@ -8,53 +8,65 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
 
 public class Practice {
-	WebDriver driver;
-
-	public Practice(WebDriver driver) {
-		
-		this.driver = driver;
-	}
-	By emailinput = By.id("email-input");
-	By passwordinput = By.id("password-input");
-	By loginButton = By.id("login-submit-button");
-	By emailRequiredError = By.xpath("//p[@id='email-error' and text()='Email is required']");
-	By passwordRequiredError = By.xpath("//p[@id='password-error' and text()='Please enter your password']");
-	By invalidEmailFormatError = By.xpath("//p[@id='email-error' and text()='Invalid email format']");
-	By userNotFoundError = By.xpath("//div[@data-title='' and text()='User not found with this email address']");
-	By incorrectCredentialsError = By.xpath("//div[@data-title='' and text()='Incorrect Credentials']");
-	
-	public void enterPassword(String password) {
-		WebElement passwordField = driver.findElement(passwordinput);
-		passwordField.clear();
-		passwordField.sendKeys(password);
-	}
-	
-	public void clickLoginbutton() {
-		driver.findElement(loginButton).click();
-	}
-
-	public String getEmailRequiredError() {
-		return driver.findElement(emailRequiredError).getText();
-	}
-	
-	public String getPasswordRequiredError() {
-		return driver.findElement(passwordRequiredError).getText();
-	}
-	
-	public String getInvalidEmailFormatError() {
-		return driver.findElement(invalidEmailFormatError).getText();
-	}
-	
-	public String getUserNotFoundError() {
-		return driver.findElement(userNotFoundError).getText();
-	}
-	
-	public String getIncorrectCredentialsError() {
-		return driver.findElement(incorrectCredentialsError).getText();
+	@Test(description = "Successfully entered youtube")
+	public void login() {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.youtube.com/");
+		WebElement search = driver.findElement(By.name("search_query"));
+		search.sendKeys("how to convert to pdf from image");
+		WebElement button = driver.findElement(By.className("ytSearchboxComponentSearchButton ytSearchboxComponentSearchButtonDark"));
+		button.click();;
 	}
 }
+//	WebDriver driver;
+//
+//	public Practice(WebDriver driver) {
+//		
+//		this.driver = driver;
+//	}
+//	By emailinput = By.id("email-input");
+//	By passwordinput = By.id("password-input");
+//	By loginButton = By.id("login-submit-button");
+//	By emailRequiredError = By.xpath("//p[@id='email-error' and text()='Email is required']");
+//	By passwordRequiredError = By.xpath("//p[@id='password-error' and text()='Please enter your password']");
+//	By invalidEmailFormatError = By.xpath("//p[@id='email-error' and text()='Invalid email format']");
+//	By userNotFoundError = By.xpath("//div[@data-title='' and text()='User not found with this email address']");
+//	By incorrectCredentialsError = By.xpath("//div[@data-title='' and text()='Incorrect Credentials']");
+//	
+//	public void enterPassword(String password) {
+//		WebElement passwordField = driver.findElement(passwordinput);
+//		passwordField.clear();
+//		passwordField.sendKeys(password);
+//	}
+//	
+//	public void clickLoginbutton() {
+//		driver.findElement(loginButton).click();
+//	}
+//
+//	public String getEmailRequiredError() {
+//		return driver.findElement(emailRequiredError).getText();
+//	}
+//	
+//	public String getPasswordRequiredError() {
+//		return driver.findElement(passwordRequiredError).getText();
+//	}
+//	
+//	public String getInvalidEmailFormatError() {
+//		return driver.findElement(invalidEmailFormatError).getText();
+//	}
+//	
+//	public String getUserNotFoundError() {
+//		return driver.findElement(userNotFoundError).getText();
+//	}
+//	
+//	public String getIncorrectCredentialsError() {
+//		return driver.findElement(incorrectCredentialsError).getText();
+//	}
+//}
 	
 		// TODO Auto-generated method stub
 //      WebDriver driver = new ChromeDriver();

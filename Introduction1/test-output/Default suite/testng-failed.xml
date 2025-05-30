@@ -3,14 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="kodnest.KodLoginTests2">
+      <class name="Practice">
         <methods>
-          <include name="testUnregisteredEmail"/>
-          <include name="refreshPage"/>
-          <include name="setUp"/>
-          <include name="testRegisteredMailWrongPassword"/>
+          <include name="login"/>
         </methods>
-      </class> <!-- kodnest.KodLoginTests2 -->
+      </class> <!-- Practice -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
