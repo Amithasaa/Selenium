@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
@@ -15,11 +16,10 @@ public class Practice {
 	public void login() {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://www.youtube.com/");
-		WebElement search = driver.findElement(By.name("search_query"));
-		search.sendKeys("how to convert to pdf from image");
-		WebElement button = driver.findElement(By.className("ytSearchboxComponentSearchButton ytSearchboxComponentSearchButtonDark"));
-		button.click();;
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));		
+		driver.get("https://app.kodnest.in/login");
+		WebElement search = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div/div/div/div/div/div[2]/form/div/div[2]/input"));		
+		search.sendKeys("amitha@gmail.com");
 	}
 }
 //	WebDriver driver;
